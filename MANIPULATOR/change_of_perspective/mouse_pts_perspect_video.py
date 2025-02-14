@@ -9,7 +9,6 @@ import numpy as np
 import os
 
 
-
 cap = cv2.VideoCapture(0)   # захват видео
 
      
@@ -24,7 +23,6 @@ minb, ming, minr, maxb, maxg, maxr = None, None,None, None,None, None
 points_of_quadr = False
 is_pressed_y = False
 setting_up_trackers = True
-
 
 
 def delete_last_added_point():
@@ -42,7 +40,8 @@ def render_points_on_video():
     Отображение видеопотока с наложенными на него отмеченными точками
     """
     
-    global copy_img
+    global copy_img 
+    
     
     s, img = cap.read()  # чтение кадра
     if not s:  # если не удалось считать - выходим
