@@ -59,20 +59,10 @@ class ColorTracker:
         
         with open(os.path.join(self.main_dir, "trackbars_save.txt"), "a") as f:
             title = input("\nEnter the description \nTo cancel, write no: ")
+            
             if title.lower() != "no":
                 f.write(f"{title}:  {self.minb, self.ming, self.minr}, {self.maxb, self.maxg, self.maxr}\n")
                 print("Saved\n")
+                
 
 
-
-if __name__ == "__main__":
-    
-    cap = cv2.VideoCapture(0)
-    tracker = ColorTracker()
-    
-    while True:
-        ret, frame = cap.read()
-        if not ret:
-            break
-        
-        tracker.process_frame(frame)

@@ -19,8 +19,7 @@ import cv2
 import socket
 import numpy as np
 import base64
-import json
-import os
+
 
 
 class UDPClient:
@@ -28,25 +27,21 @@ class UDPClient:
     Класс для работы с UDP-клиентом, получающим видеопоток от сервера.
     """
     
-    DIR_NAME = os.path.dirname(os.path.abspath(__file__))
 
 
-    def __init__(self, config_file=f"{DIR_NAME}/config.json"):
+    def __init__(self, host_ip = "0.0.0.0", port = 9999, buffer_size = 65536):
         """
         Инициализация UDP-клиента.
 
         Параметры:
-            host_ip (str): IP-адрес сервера (по умолчанию "0.0.0.0").
+            host_ip (str): IP-адрес сервера - тот, кто передаёт изображения (по умолчанию "0.0.0.0").
             port (int): Порт сервера (по умолчанию 9999).
             buffer_size (int): Размер буфера для приема данных (по умолчанию 65536 байт).
         """
         
-        with open(config_file, "r") as file:
-            config = json.load(file)
-        
-        self.host_ip = config["host_ip"]             # IP-адрес сервера
-        self.port = config["port"]        # Порт сервера
-        self.buffer_size = config["buffer_size"]           # Размер буфера для приема данных
+        self.host_ip = host_ip             # IP-адрес сервера
+        self.port = port                    # Порт сервера
+        self.buffer_size = buffer_size         # Размер буфера для приема данных
 
         
         # Создание UDP-сокета
