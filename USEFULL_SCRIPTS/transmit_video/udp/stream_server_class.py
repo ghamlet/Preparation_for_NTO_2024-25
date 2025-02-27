@@ -21,6 +21,9 @@ UDPStreamer - класс для отправки видеопотока по UDP
 import cv2
 import socket
 import base64
+import json
+import os
+
 
 
 class UDPStreamer:
@@ -36,7 +39,10 @@ class UDPStreamer:
         client_addr (tuple): Адрес клиента (IP, порт), подключившегося к серверу.
     """
 
-    def __init__(self, host_ip="0.0.0.0", port=9999, buffer_size=65536):
+    DIR_NAME = os.path.dirname(os.path.abspath(__file__))
+
+
+    def __init__(self,  config_file=f"{DIR_NAME}/config.json"):
         """
         Инициализация UDP-сервера.
 
@@ -46,10 +52,15 @@ class UDPStreamer:
             buffer_size (int): Размер буфера для приема данных (по умолчанию 65536 байт).
         """
         
-        self.host_ip = host_ip  # IP-адрес сервера
-        self.port = port  # Порт сервера
+        
+        with open(config_file, "r") as file:
+            config = json.load(file)
+        
+        self.host_ip = config["host_ip"]
+        self.port = config["port"]
+        self.buffer_size = config["buffer_size"]
+        
         self.socket_address = (self.host_ip, self.port)  # Адрес сокета (IP, порт)
-        self.buffer_size = buffer_size  # Размер буфера для приема данных
 
         # Создание UDP-сокета
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

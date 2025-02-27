@@ -1,7 +1,7 @@
 import cv2
 from stream_server_class import UDPStreamer
 
-video_server = UDPStreamer(host_ip="192.168.0.69", port=9999)
+video_server = UDPStreamer()
 
 
 
