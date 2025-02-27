@@ -1,0 +1,13 @@
+from USEFULL_SCRIPTS import UDPClient
+import cv2
+
+client = UDPClient()
+
+while True:
+    frame = client.receive_frame()
+    
+    cv2.imshow("Receiving Frame", frame)
+    
+    # Выход по нажатию клавиши 'q'
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
