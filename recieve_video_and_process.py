@@ -6,6 +6,7 @@ import cv2
 client = UDPClient(host_ip="127.0.0.1", port=4444)
 tracker = ColorTracker()
 
+
 while True:
     frame = client.receive_frame()
     
