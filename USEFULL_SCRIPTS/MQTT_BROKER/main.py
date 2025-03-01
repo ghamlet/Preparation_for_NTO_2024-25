@@ -80,6 +80,7 @@ def main():
             client.publish(topic, msg, 0)
             client.loop_write()
         
+        
         for _ in range(20):    # читаем пришедшие ответы
             client.loop_read()
             time.sleep(0.2)
