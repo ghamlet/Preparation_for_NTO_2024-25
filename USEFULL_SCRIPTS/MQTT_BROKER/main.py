@@ -84,7 +84,6 @@ def main():
             client.loop_read()
             time.sleep(0.2)
         
-        
         print("user_result: ", user_test_results[current_test_id])
         print("TRUE answer: ", test_results[current_test_id])
         
