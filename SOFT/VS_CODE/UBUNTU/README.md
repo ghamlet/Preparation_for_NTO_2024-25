@@ -1,1 +1,0 @@
-`sudo dpkg -i /path/to/code_1.97.2-1739406807_amd64`
