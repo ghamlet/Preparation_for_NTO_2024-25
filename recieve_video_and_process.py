@@ -3,15 +3,14 @@ from USEFULL_SCRIPTS import ColorTracker
 
 import cv2
 
-client = UDPClient(host_ip="127.0.0.1", port=4444)
-tracker = ColorTracker()
+# client = UDPClient(host_ip="172.16.65.104", port=9999)
+# tracker = ColorTracker()
 
 
 while True:
-    frame = client.receive_frame()
-    
-    cv2.imshow("Receiving Frame", frame)
-    tracker.process_frame(frame)
+    frame = "http://172.16.65.104:8088"    
+    cv2.imshow("Receiving Frame", frame,dad)
+    # tracker.process_frame(frame)
 
     
     # Выход по нажатию клавиши 'q'
